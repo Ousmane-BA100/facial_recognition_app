@@ -14,6 +14,17 @@ mongo = PyMongo(app)
 # Collection des utilisateurs
 collection = mongo.db.users
 
+### Route pour l'URL racine
+@app.route('/')
+def home():
+    return jsonify({
+        "message": "Bienvenue sur l'API de reconnaissance faciale !",
+        "endpoints": {
+            "/register": "POST - Enregistrer un utilisateur avec une image",
+            "/login": "POST - Authentifier un utilisateur avec une image"
+        }
+    })
+
 ### Enregistrer un utilisateur avec une image
 @app.route('/register', methods=['POST'])
 def register():
